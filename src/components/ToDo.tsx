@@ -1,10 +1,9 @@
 import React from "react";
-import { IToDo, toDoState } from "../atoms";
-import { useRecoilState, useRecoilValue } from "recoil";
+import { Categories, IToDo, toDoState } from "../atoms";
+import { useRecoilState } from "recoil";
 
 function ToDo({ text, category, id }: IToDo) {
   const [toDos, setToDos] = useRecoilState(toDoState);
-  console.log(toDos);
   const onClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     const {
       currentTarget: { name },
@@ -23,18 +22,18 @@ function ToDo({ text, category, id }: IToDo) {
   return (
     <>
       <li>{text}</li>
-      {category !== "DOING" && (
-        <button name="DOING" onClick={onClick}>
+      {category !== Categories.DOING && (
+        <button name={Categories.DOING} onClick={onClick}>
           하는중
         </button>
       )}
-      {category !== "TO_DO" && (
-        <button name="TO_DO" onClick={onClick}>
+      {category !== Categories.TO_DO && (
+        <button name={Categories.TO_DO} onClick={onClick}>
           해야할일
         </button>
       )}
-      {category !== "DONE" && (
-        <button name="DONE" onClick={onClick}>
+      {category !== Categories.DONE && (
+        <button name={Categories.DONE} onClick={onClick}>
           끝난일
         </button>
       )}
