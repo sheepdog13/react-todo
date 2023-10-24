@@ -15,30 +15,30 @@ const Wrap = styled.div`
 
 const Title = styled.h1`
   text-align: center;
-  padding: 20px;
+  padding-bottom: 40px;
   font-size: 40px;
   font-weight: 400;
-  margin-top: 100px;
-  width: 100%;
+  margin-top: 50px;
+  width: 80%;
   border-bottom: 1px solid #ffffff;
 `;
 
 function ToDoList() {
-  const toDos = useRecoilValue(toDoSelector);
-  const [category, setCategory] = useRecoilState(categoryState);
-  const onInput = (event: React.FormEvent<HTMLSelectElement>) => {
-    setCategory(event.currentTarget.value as any);
-  };
+  const [todo, doing, done] = useRecoilValue(toDoSelector);
+
+  console.log(todo, doing, done);
   return (
     <Wrap>
       <Title>ToDoList</Title>
-      <select value={category} onInput={onInput}>
-        <option value={Categories.TO_DO}>할일</option>
-        <option value={Categories.DOING}>하는중</option>
-        <option value={Categories.DONE}>끝난일</option>
-      </select>
+
       <CreateToDo />
-      {toDos?.map((toDo) => (
+      {todo?.map((toDo) => (
+        <ToDo key={toDo.id} {...toDo} />
+      ))}
+      {doing?.map((toDo) => (
+        <ToDo key={toDo.id} {...toDo} />
+      ))}
+      {done?.map((toDo) => (
         <ToDo key={toDo.id} {...toDo} />
       ))}
     </Wrap>
