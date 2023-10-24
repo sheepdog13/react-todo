@@ -23,6 +23,26 @@ const Title = styled.h1`
   border-bottom: 1px solid #ffffff;
 `;
 
+const ToDoCont = styled.div`
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin-top: 40px;
+  gap: 10vw;
+`;
+
+const TodoBox = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30px;
+`;
+
+const SubTitle = styled.h2`
+  font-size: 24px;
+  font-weight: 400;
+  border-bottom: 2px solid #ffffff;
+`;
+
 function ToDoList() {
   const [todo, doing, done] = useRecoilValue(toDoSelector);
 
@@ -30,17 +50,27 @@ function ToDoList() {
   return (
     <Wrap>
       <Title>ToDoList</Title>
-
       <CreateToDo />
-      {todo?.map((toDo) => (
-        <ToDo key={toDo.id} {...toDo} />
-      ))}
-      {doing?.map((toDo) => (
-        <ToDo key={toDo.id} {...toDo} />
-      ))}
-      {done?.map((toDo) => (
-        <ToDo key={toDo.id} {...toDo} />
-      ))}
+      <ToDoCont>
+        <TodoBox>
+          <SubTitle>TODO</SubTitle>
+          {todo?.map((toDo) => (
+            <ToDo key={toDo.id} {...toDo} />
+          ))}
+        </TodoBox>
+        <TodoBox>
+          <SubTitle>DOING</SubTitle>
+          {doing?.map((toDo) => (
+            <ToDo key={toDo.id} {...toDo} />
+          ))}
+        </TodoBox>
+        <TodoBox>
+          <SubTitle>DONE</SubTitle>
+          {done?.map((toDo) => (
+            <ToDo key={toDo.id} {...toDo} />
+          ))}
+        </TodoBox>
+      </ToDoCont>
     </Wrap>
   );
 }

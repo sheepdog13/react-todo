@@ -4,6 +4,7 @@ import { Categories, categoryState, toDoState } from "../atoms";
 import styled from "styled-components";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 import SvgIcon from "@mui/material/SvgIcon";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 
 interface IForm {
   toDo: string;
@@ -39,16 +40,47 @@ const Input = styled.input`
   }
 `;
 
-const Select = styled.select`
+const SelectBox = styled.div`
+  position: relative;
+  display: flex;
+  align-items: center;
+  background-color: #dcace2;
+  border-radius: 5px;
   margin-left: 5px;
+  svg {
+    position: absolute;
+    right: 0px;
+  }
+`;
+
+const Select = styled.select`
+  margin-left: 10px;
+  margin-right: 30px;
   height: 60px;
-  font-size: 20px;
+  font-size: 25px;
   border: 0;
   border-radius: 5px;
   outline: none;
-  padding: 10px;
   color: #fff;
   background-color: #dcace2;
+  appearance: none;
+  cursor: pointer;
+`;
+
+const Btn = styled.button`
+  display: flex;
+  align-items: center;
+  padding: 8px 16px;
+  margin-left: 5px;
+  height: 60px;
+  font-size: 25px;
+  border: 0;
+  border-radius: 5px;
+  outline: none;
+  color: #fff;
+  background-color: #dcace2;
+  appearance: none;
+  cursor: pointer;
 `;
 
 function CreateToDo() {
@@ -80,14 +112,17 @@ function CreateToDo() {
           })}
           placeholder="Enter your to-do"
         />
-        <Select value={category} onInput={onInput}>
-          <option value={Categories.TO_DO}>todo</option>
-          <option value={Categories.DOING}>doing</option>
-          <option value={Categories.DONE}>done</option>
-        </Select>
-        <Select as="button">
+        <SelectBox>
+          <Select value={category} onInput={onInput}>
+            <option value={Categories.TO_DO}>todo</option>
+            <option value={Categories.DOING}>doing</option>
+            <option value={Categories.DONE}>done</option>
+          </Select>
+          <SvgIcon component={ExpandMoreIcon} fontSize="large" />
+        </SelectBox>
+        <Btn>
           <SvgIcon component={AddCircleIcon} />
-        </Select>
+        </Btn>
       </Form>
     </Wrap>
   );
