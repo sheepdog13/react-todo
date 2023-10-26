@@ -2,9 +2,9 @@ import { useRecoilState, useRecoilValue } from "recoil";
 import { toDoState, toDoSelector, categoryState, Categories } from "../atoms";
 import CreateToDo from "./CreateToDo";
 import ToDo from "./ToDo";
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
-
+import { IToDo } from "../atoms";
 const Wrap = styled.div`
   display: flex;
   flex-direction: column;
@@ -45,8 +45,24 @@ const SubTitle = styled.h2`
 
 function ToDoList() {
   const [todo, doing, done] = useRecoilValue(toDoSelector);
+  localStorage.setItem("todos", "초기값");
+  const localtodos =
+    localStorage.getItem("todos") !== null ? localStorage.getItem("todos") : "";
 
-  console.log(todo, doing, done);
+  const todos = JSON.parse(localtodos ?? "");
+
+  const localSelect = () => {
+    if (todos !== null) {
+      return [
+        todos.filter((toDo: IToDo) => toDo.category === Categories.TO_DO),
+        todos.filter((toDo: IToDo) => toDo.category === Categories.DOING),
+        todos.filter((toDo: IToDo) => toDo.category === Categories.DONE),
+      ];
+    } else {
+      return [[], [], []];
+    }
+  };
+  const [Ltodo, Ldoing, Ldone] = localSelect();
   return (
     <Wrap>
       <Title>ToDoList</Title>
@@ -54,19 +70,19 @@ function ToDoList() {
       <ToDoCont>
         <TodoBox>
           <SubTitle>TODO</SubTitle>
-          {todo?.map((toDo) => (
+          {Ltodo?.map((toDo: IToDo) => (
             <ToDo key={toDo.id} {...toDo} />
           ))}
         </TodoBox>
         <TodoBox>
           <SubTitle>DOING</SubTitle>
-          {doing?.map((toDo) => (
+          {Ldoing?.map((toDo: IToDo) => (
             <ToDo key={toDo.id} {...toDo} />
           ))}
         </TodoBox>
         <TodoBox>
           <SubTitle>DONE</SubTitle>
-          {done?.map((toDo) => (
+          {Ldone?.map((toDo: IToDo) => (
             <ToDo key={toDo.id} {...toDo} />
           ))}
         </TodoBox>

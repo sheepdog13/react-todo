@@ -5,6 +5,7 @@ import styled from "styled-components";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 import SvgIcon from "@mui/material/SvgIcon";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import { Console } from "console";
 
 interface IForm {
   toDo: string;
@@ -88,7 +89,7 @@ function CreateToDo() {
   const onInput = (event: React.FormEvent<HTMLSelectElement>) => {
     setCategory(event.currentTarget.value as any);
   };
-  const setToDos = useSetRecoilState(toDoState);
+  const [todos, setToDos] = useRecoilState(toDoState);
   const {
     register,
     handleSubmit,
@@ -100,8 +101,10 @@ function CreateToDo() {
       { text: toDo, id: Date.now(), category },
       ...oldToDos,
     ]);
+    localStorage.setItem("todos", JSON.stringify(todos));
     setValue("toDo", "");
   };
+
   return (
     <Wrap>
       <Error>{errors?.toDo?.message}</Error>

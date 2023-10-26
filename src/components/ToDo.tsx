@@ -37,6 +37,8 @@ const Btn = styled.button`
 `;
 
 function ToDo({ text, category, id }: IToDo) {
+  localStorage.setItem("todos", "초기값");
+
   const [toDos, setToDos] = useRecoilState(toDoState);
   const onClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     const {
@@ -44,7 +46,6 @@ function ToDo({ text, category, id }: IToDo) {
     } = event;
     setToDos((oldToDos) => {
       const targetIndex = oldToDos.findIndex((toDo) => toDo.id === id);
-      const oldToDo = oldToDos[targetIndex];
       const newToDo = { text, id, category: name as any };
       return [
         ...oldToDos.slice(0, targetIndex),
@@ -52,7 +53,9 @@ function ToDo({ text, category, id }: IToDo) {
         ...oldToDos.slice(targetIndex + 1),
       ];
     });
+    localStorage.setItem("todos", JSON.stringify(toDos));
   };
+
   return (
     <Wrap>
       <Text>{text}</Text>
