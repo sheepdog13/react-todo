@@ -6,6 +6,7 @@ import AddCircleIcon from "@mui/icons-material/AddCircle";
 import SvgIcon from "@mui/material/SvgIcon";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { Console } from "console";
+import { useEffect } from "react";
 
 interface IForm {
   toDo: string;
@@ -101,10 +102,11 @@ function CreateToDo() {
       { text: toDo, id: Date.now(), category },
       ...oldToDos,
     ]);
-    localStorage.setItem("todos", JSON.stringify(todos));
     setValue("toDo", "");
+    useEffect(() => {
+      localStorage.setItem("todos", JSON.stringify(todos));
+    }, [todos]);
   };
-
   return (
     <Wrap>
       <Error>{errors?.toDo?.message}</Error>

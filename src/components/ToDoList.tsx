@@ -44,25 +44,31 @@ const SubTitle = styled.h2`
 `;
 
 function ToDoList() {
+  // const a = "a";
   const [todo, doing, done] = useRecoilValue(toDoSelector);
-  localStorage.setItem("todos", "초기값");
-  const localtodos =
-    localStorage.getItem("todos") !== null ? localStorage.getItem("todos") : "";
+  // useEffect(() => {
+  //   localStorage.setItem("todos", "초기값");
+  // }, [a]);
+  // const localtodos =
+  //   localStorage.getItem("todos") !== "초기값"
+  //     ? localStorage.getItem("todos")
+  //     : [{ aaaa: "aaaa" }];
 
-  const todos = JSON.parse(localtodos ?? "");
+  // console.log(localtodos);
 
-  const localSelect = () => {
-    if (todos !== null) {
-      return [
-        todos.filter((toDo: IToDo) => toDo.category === Categories.TO_DO),
-        todos.filter((toDo: IToDo) => toDo.category === Categories.DOING),
-        todos.filter((toDo: IToDo) => toDo.category === Categories.DONE),
-      ];
-    } else {
-      return [[], [], []];
-    }
-  };
-  const [Ltodo, Ldoing, Ldone] = localSelect();
+  // const localSelect = () => {
+  //   if (todos !== null) {
+  //     return [
+  //       todos.filter((toDo: IToDo) => toDo.category === Categories.TO_DO),
+  //       todos.filter((toDo: IToDo) => toDo.category === Categories.DOING),
+  //       todos.filter((toDo: IToDo) => toDo.category === Categories.DONE),
+  //     ];
+  //   } else {
+  //     return [[], [], []];
+  //   }
+  // };
+
+  // const [Ltodo, Ldoing, Ldone] = localSelect();
   return (
     <Wrap>
       <Title>ToDoList</Title>
@@ -70,19 +76,19 @@ function ToDoList() {
       <ToDoCont>
         <TodoBox>
           <SubTitle>TODO</SubTitle>
-          {Ltodo?.map((toDo: IToDo) => (
+          {todo?.map((toDo: IToDo) => (
             <ToDo key={toDo.id} {...toDo} />
           ))}
         </TodoBox>
         <TodoBox>
           <SubTitle>DOING</SubTitle>
-          {Ldoing?.map((toDo: IToDo) => (
+          {doing?.map((toDo: IToDo) => (
             <ToDo key={toDo.id} {...toDo} />
           ))}
         </TodoBox>
         <TodoBox>
           <SubTitle>DONE</SubTitle>
-          {Ldone?.map((toDo: IToDo) => (
+          {done?.map((toDo: IToDo) => (
             <ToDo key={toDo.id} {...toDo} />
           ))}
         </TodoBox>

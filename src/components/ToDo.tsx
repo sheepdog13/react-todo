@@ -37,8 +37,6 @@ const Btn = styled.button`
 `;
 
 function ToDo({ text, category, id }: IToDo) {
-  localStorage.setItem("todos", "초기값");
-
   const [toDos, setToDos] = useRecoilState(toDoState);
   const onClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     const {
