@@ -44,31 +44,7 @@ const SubTitle = styled.h2`
 `;
 
 function ToDoList() {
-  // const a = "a";
   const [todo, doing, done] = useRecoilValue(toDoSelector);
-  // useEffect(() => {
-  //   localStorage.setItem("todos", "초기값");
-  // }, [a]);
-  // const localtodos =
-  //   localStorage.getItem("todos") !== "초기값"
-  //     ? localStorage.getItem("todos")
-  //     : [{ aaaa: "aaaa" }];
-
-  // console.log(localtodos);
-
-  // const localSelect = () => {
-  //   if (todos !== null) {
-  //     return [
-  //       todos.filter((toDo: IToDo) => toDo.category === Categories.TO_DO),
-  //       todos.filter((toDo: IToDo) => toDo.category === Categories.DOING),
-  //       todos.filter((toDo: IToDo) => toDo.category === Categories.DONE),
-  //     ];
-  //   } else {
-  //     return [[], [], []];
-  //   }
-  // };
-
-  // const [Ltodo, Ldoing, Ldone] = localSelect();
   return (
     <Wrap>
       <Title>ToDoList</Title>

@@ -1,8 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Categories, IToDo, toDoState } from "../atoms";
 import { useRecoilState } from "recoil";
 import styled from "styled-components";
-
 const Wrap = styled.div`
   display: flex;
   width: 20vw;
@@ -42,8 +41,8 @@ function ToDo({ text, category, id }: IToDo) {
     const {
       currentTarget: { name },
     } = event;
-    setToDos((oldToDos) => {
-      const targetIndex = oldToDos.findIndex((toDo) => toDo.id === id);
+    setToDos((oldToDos: any) => {
+      const targetIndex = oldToDos.findIndex((toDo: any) => toDo.id === id);
       const newToDo = { text, id, category: name as any };
       return [
         ...oldToDos.slice(0, targetIndex),
@@ -51,8 +50,10 @@ function ToDo({ text, category, id }: IToDo) {
         ...oldToDos.slice(targetIndex + 1),
       ];
     });
-    localStorage.setItem("todos", JSON.stringify(toDos));
   };
+  useEffect(() => {
+    localStorage.setItem("todos", JSON.stringify(toDos));
+  }, [toDos]);
 
   return (
     <Wrap>

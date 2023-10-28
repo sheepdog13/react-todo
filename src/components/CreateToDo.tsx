@@ -5,7 +5,6 @@ import styled from "styled-components";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 import SvgIcon from "@mui/material/SvgIcon";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import { Console } from "console";
 import { useEffect } from "react";
 
 interface IForm {
@@ -98,14 +97,11 @@ function CreateToDo() {
     formState: { errors },
   } = useForm<IForm>();
   const handleValid = ({ toDo }: IForm) => {
-    setToDos((oldToDos) => [
+    setToDos((oldToDos: any) => [
       { text: toDo, id: Date.now(), category },
       ...oldToDos,
     ]);
     setValue("toDo", "");
-    useEffect(() => {
-      localStorage.setItem("todos", JSON.stringify(todos));
-    }, [todos]);
   };
   return (
     <Wrap>
