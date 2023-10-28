@@ -2,8 +2,11 @@ import React, { useEffect } from "react";
 import { Categories, IToDo, toDoState } from "../atoms";
 import { useRecoilState } from "recoil";
 import styled from "styled-components";
+import { SvgIcon } from "@mui/material";
+import CancelIcon from "@mui/icons-material/Cancel";
 const Wrap = styled.div`
   display: flex;
+  position: relative;
   width: 20vw;
   flex-direction: column;
   align-items: center;
@@ -34,6 +37,11 @@ const Btn = styled.button`
   color: #fff;
   background-color: #ce8ad6;
 `;
+const CancelBox = styled.div`
+  position: absolute;
+  top: -5px;
+  right: -5px;
+`;
 
 function ToDo({ text, category, id }: IToDo) {
   const [toDos, setToDos] = useRecoilState(toDoState);
@@ -51,12 +59,21 @@ function ToDo({ text, category, id }: IToDo) {
       ];
     });
   };
-  useEffect(() => {
-    localStorage.setItem("todos", JSON.stringify(toDos));
-  }, [toDos]);
+  const deleteTodo = () => {
+    setToDos((oldToDos: any) => {
+      const targetIndex = oldToDos.findIndex((toDo: any) => toDo.id === id);
+      return [
+        ...oldToDos.slice(0, targetIndex),
+        ...oldToDos.slice(targetIndex + 1),
+      ];
+    });
+  };
 
   return (
     <Wrap>
+      <CancelBox onClick={deleteTodo}>
+        <SvgIcon component={CancelIcon} />
+      </CancelBox>
       <Text>{text}</Text>
       <BtnBox>
         {category !== Categories.DOING && (
