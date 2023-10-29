@@ -52,19 +52,19 @@ function ToDoList() {
       <ToDoCont>
         <TodoBox>
           <SubTitle>TODO</SubTitle>
-          {todo?.map((toDo: IToDo) => (
+          {todo?.map((toDo) => (
             <ToDo key={toDo.id} {...toDo} />
           ))}
         </TodoBox>
         <TodoBox>
           <SubTitle>DOING</SubTitle>
-          {doing?.map((toDo: IToDo) => (
+          {doing?.map((toDo) => (
             <ToDo key={toDo.id} {...toDo} />
           ))}
         </TodoBox>
         <TodoBox>
           <SubTitle>DONE</SubTitle>
-          {done?.map((toDo: IToDo) => (
+          {done?.map((toDo) => (
             <ToDo key={toDo.id} {...toDo} />
           ))}
         </TodoBox>

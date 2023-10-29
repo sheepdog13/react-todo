@@ -17,6 +17,7 @@ const Wrap = styled.div`
 `;
 
 const Text = styled.span`
+  text-align: center;
   font-size: 20px;
   padding: 10px;
 `;
@@ -60,7 +61,7 @@ function ToDo({ text, category, id }: IToDo) {
     });
   };
   const deleteTodo = () => {
-    setToDos((oldToDos: any) => {
+    setToDos((oldToDos) => {
       const targetIndex = oldToDos.findIndex((toDo: any) => toDo.id === id);
       return [
         ...oldToDos.slice(0, targetIndex),

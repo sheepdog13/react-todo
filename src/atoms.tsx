@@ -19,7 +19,7 @@ export const categoryState = atom<Categories>({
 
 const { persistAtom } = recoilPersist();
 
-export const toDoState = atom({
+export const toDoState = atom<IToDo[]>({
   key: "toDo",
   default: [],
   effects_UNSTABLE: [persistAtom],
@@ -30,9 +30,9 @@ export const toDoSelector = selector({
   get: ({ get }) => {
     const toDos = get(toDoState);
     return [
-      toDos.filter((toDo: any) => toDo.category === Categories.TO_DO),
-      toDos.filter((toDo: any) => toDo.category === Categories.DOING),
-      toDos.filter((toDo: any) => toDo.category === Categories.DONE),
+      toDos.filter((toDo) => toDo.category === Categories.TO_DO),
+      toDos.filter((toDo) => toDo.category === Categories.DOING),
+      toDos.filter((toDo) => toDo.category === Categories.DONE),
     ];
   },
 });

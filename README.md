@@ -1,46 +1,80 @@
-# Getting Started with Create React App
+# todolist
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+> recoil과 typescript를 활용한 todolist
 
-## Available Scripts
+## 🗓️ 기간
 
-In the project directory, you can run:
+### 2023.10.23 ~ 2023.10.28
 
-### `npm start`
+## ⚙️ 기술스택
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### ✔️ Frond-end
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+<img src="https://img.shields.io/badge/react-61DAFB?style=for-the-badge&logo=react&logoColor=white">
+<img src="https://img.shields.io/badge/typescript-3178C6?style=for-the-badge&logo=typescript&logoColor=white">
+<img src="https://img.shields.io/badge/recoil-3578E5?style=for-the-badge&logo=recoil&logoColor=white">
 
-### `npm test`
+## 💡 프로젝트를 만든 이유
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### recoil selector 사용법을 익히고 typescript 사용법을 익히기 위해
 
-### `npm run build`
+## 기능 설명
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+<figure>
+    <img src="src/todolist_hompage.png">
+</figure>
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### 배포 url: [https://sheepdog13.github.io/react-todo/](https://sheepdog13.github.io/react-todo/)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+스크린 샷과 코드 예제를 통해 사용 방법을 자세히 설명합니다.
 
-### `npm run eject`
+_더 많은 예제와 사용법은 [Wiki][wiki]를 참고하세요._
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## 개발 환경 설정
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+모든 개발 의존성 설치 방법과 자동 테스트 슈트 실행 방법을 운영체제 별로 작성합니다.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+```sh
+make install
+npm test
+```
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## 업데이트 내역
 
-## Learn More
+- 0.2.1
+  - 수정: 문서 업데이트 (모듈 코드 동일)
+- 0.2.0
+  - 수정: `setDefaultXYZ()` 메서드 제거
+  - 추가: `init()` 메서드 추가
+- 0.1.1
+     \* 버그 수정: `baz()` 메서드 호출 시 부팅되지 않는 현상 (@컨트리뷰터 감사합니다!)
+- 0.1.0
+  - 첫 출시
+  - 수정: `foo()` 메서드 네이밍을 `bar()`로 수정
+- 0.0.1
+  - 작업 진행 중
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## 정보
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+이름 – [@트위터 주소](https://twitter.com/dbader_org) – 이메일주소@example.com
+
+XYZ 라이센스를 준수하며 `LICENSE`에서 자세한 정보를 확인할 수 있습니다.
+
+[https://github.com/yourname/github-link](https://github.com/dbader/)
+
+## 기여 방법
+
+1. (<https://github.com/yourname/yourproject/fork>)을 포크합니다.
+2. (`git checkout -b feature/fooBar`) 명령어로 새 브랜치를 만드세요.
+3. (`git commit -am 'Add some fooBar'`) 명령어로 커밋하세요.
+4. (`git push origin feature/fooBar`) 명령어로 브랜치에 푸시하세요.
+5. 풀리퀘스트를 보내주세요.
+
+<!-- Markdown link & img dfn's -->
+
+[npm-image]: https://img.shields.io/npm/v/datadog-metrics.svg?style=flat-square
+[npm-url]: https://npmjs.org/package/datadog-metrics
+[npm-downloads]: https://img.shields.io/npm/dm/datadog-metrics.svg?style=flat-square
+[travis-image]: https://img.shields.io/travis/dbader/node-datadog-metrics/master.svg?style=flat-square
+[travis-url]: https://travis-ci.org/dbader/node-datadog-metrics
+[wiki]: https://github.com/yourname/yourproject/wiki
