@@ -1,5 +1,6 @@
 import { createGlobalStyle } from "styled-components";
 import ToDoList from "./components/ToDoList";
+import DndComp from "./components/DndComp";
 
 const GlobalStyle = createGlobalStyle`
   @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400&display=swap');
@@ -56,7 +57,8 @@ const GlobalStyle = createGlobalStyle`
   body {
     font-family: 'Noto Sans', sans-serif;
     background-color: ${(props) => props.theme.bgColor};
-    color: ${(props) => props.theme.textColor};
+    /* color: ${(props) => props.theme.textColor}; */
+    color: black;
   }
   a {
     text-decoration: none;
@@ -68,7 +70,8 @@ function App() {
   return (
     <>
       <GlobalStyle />
-      <ToDoList />
+      {/* <ToDoList /> */}
+      <DndComp />
     </>
   );
 }

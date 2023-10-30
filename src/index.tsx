@@ -11,13 +11,11 @@ const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
 root.render(
-  <React.StrictMode>
-    <RecoilRoot>
-      <ThemeProvider theme={darkTheme}>
-        <App />
-      </ThemeProvider>
-    </RecoilRoot>
-  </React.StrictMode>
+  <RecoilRoot>
+    <ThemeProvider theme={darkTheme}>
+      <App />
+    </ThemeProvider>
+  </RecoilRoot>
 );
 
 // If you want to start measuring performance in your app, pass a function
