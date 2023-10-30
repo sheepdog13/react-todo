@@ -114,5 +114,65 @@ react-hook-form에서 제공하는 여러가지 hook 중 1개인 useForm에 그
 />
 ```
 
-위 코드를 간단하게 설명하면 ... 문법을 통하여 register 함수의 결과값 name을 손쉽게 넣어준 것입니다
-input의 name을 toDo로 설정하고
+console.log(register("toDo")) 의 결과값
+
+<figure>
+    <img src="src/images/register.png">
+</figure>
+
+위 코드를 간단하게 설명하면 ... 문법을 통하여 register 함수의 결과값 name, onChange, onBlur, ref를 input element에 손쉽게 넣어준 것입니다.
+
+여러 input attribute(required...)를 작성할 수 있습니다.
+required에 message를 넣어주었는데, handleSubmit에서 설명하겠습니다.
+
+### handleSubmit
+
+```javascript
+const handleValid = ({ toDo }: IForm) => {
+  setToDos((oldToDos) => [
+    { text: toDo, id: Date.now(), category },
+    ...oldToDos,
+  ]);
+  setValue("toDo", "");
+};
+
+<Form onSubmit={handleSubmit(handleValid)}></Form>;
+```
+
+첫번째 인자로 성공했을때 사용할 함수를 받고, 두번째 인자로 실패했을때 사욜할 함수를 받습니다.(필수값X)
+
+handleSubmit이 실행되고 난 후 error가 발생하게 되면 errors 객체를 이용하여(해당 error 값들은 formState 객체 안의 errors에 담겨있습니다.) 사용자들에게 표시해주면 됩니다. errors 객체 형식은 아래와 같습니다.
+
+```javascript
+// errors.내가지정한 input name.message
+<Error>{errors?.toDo?.message}</Error>
+```
+
+### setValue
+
+```javascript
+const handleValid = ({ toDo }: IForm) => {
+  setToDos((oldToDos) => [
+    { text: toDo, id: Date.now(), category },
+    ...oldToDos,
+  ]);
+  setValue("toDo", "");
+};
+```
+
+setValue("필드명", 값)
+todo를 등록한후 toDo필드의 input의 value를 지우기 위해 사용
+
+### formstate
+
+```javascript
+const {
+   register,
+   handleSubmit,
+   setValue,
+   formState: { errors },
+ } = useForm<IForm>();
+
+ // errors.내가지정한 input name.message
+<Error>{errors?.toDo?.message}</Error>
+```

@@ -103,6 +103,7 @@ function CreateToDo() {
     ]);
     setValue("toDo", "");
   };
+  console.log(register("toDo"));
   return (
     <Wrap>
       <Error>{errors?.toDo?.message}</Error>
