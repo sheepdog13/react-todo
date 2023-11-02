@@ -1,10 +1,10 @@
 import { useRecoilState, useRecoilValue } from "recoil";
-import { toDoState, toDoSelector, categoryState, Categories } from "../atoms";
+import { toDoState, toDoSelector, categoryState, Categories } from "./atoms";
 import CreateToDo from "./CreateToDo";
 import ToDo from "./ToDo";
 import React, { useEffect } from "react";
 import styled from "styled-components";
-import { IToDo } from "../atoms";
+import { IToDo } from "./atoms";
 const Wrap = styled.div`
   display: flex;
   flex-direction: column;

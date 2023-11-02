@@ -5,7 +5,8 @@ export const darkTheme: DefaultTheme = {
   // textColor: "white",
   // accentColor: "#9c88ff",
   // cardBgColor: "transparent",
-  bgColor: "#3F8CF2",
-  boardColor: "#DADFE9",
-  cardColor: "white",
+  bgColor: "#262626",
+  boardColor: "#333333",
+  cardColor: "#4d4d4d",
+  textColor: "#EFEFEF",
 };

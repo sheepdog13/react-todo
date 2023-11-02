@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Categories, IToDo, toDoState } from "../atoms";
+import { Categories, IToDo, toDoState } from "./atoms";
 import { useRecoilState } from "recoil";
 import styled from "styled-components";
 import { SvgIcon } from "@mui/material";

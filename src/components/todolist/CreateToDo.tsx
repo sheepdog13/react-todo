@@ -1,6 +1,6 @@
 import { useForm } from "react-hook-form";
 import { useRecoilState, useSetRecoilState } from "recoil";
-import { Categories, categoryState, toDoState } from "../atoms";
+import { Categories, categoryState, toDoState } from "./atoms";
 import styled from "styled-components";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 import SvgIcon from "@mui/material/SvgIcon";

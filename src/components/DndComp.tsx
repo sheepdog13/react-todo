@@ -1,50 +1,53 @@
 import { DragDropContext, DropResult } from "react-beautiful-dnd";
 import { useRecoilState } from "recoil";
 import styled from "styled-components";
-import { toDostate } from "../dndatoms";
 import Board from "./Board";
+import { toDoState } from "../dndatoms";
 
 const Wrapper = styled.div`
   display: flex;
-  max-width: 680px;
-  width: 100%;
-  margin: 0 auto;
+  flex-direction: row;
   justify-content: center;
-  align-items: center;
+  width: 100vw;
   height: 100vh;
+  padding: 0 30px;
 `;
 
 const Boards = styled.div`
-  display: grid;
+  display: flex;
+  align-items: flex-start;
   width: 100%;
   gap: 10px;
-  grid-template-columns: repeat(3, 1fr);
 `;
+
 function DndComp() {
-  const [toDos, setToDos] = useRecoilState(toDostate);
+  const [toDos, setToDos] = useRecoilState(toDoState);
   const onDragEnd = (info: DropResult) => {
-    const { destination, draggableId, source } = info;
+    const { destination, source } = info;
     if (!destination) return;
     if (destination?.droppableId === source.droppableId) {
       setToDos((allBoards) => {
         const boardCopy = [...allBoards[source.droppableId]];
+        const taskObj = boardCopy[source.index];
         boardCopy.splice(source.index, 1);
-        boardCopy.splice(destination?.index, 0, draggableId);
+        boardCopy.splice(destination?.index, 0, taskObj);
         return {
           ...allBoards,
           [source.droppableId]: boardCopy,
         };
       });
-    } else if (destination?.droppableId !== source.droppableId) {
+    }
+    if (destination.droppableId !== source.droppableId) {
       setToDos((allBoards) => {
-        const SourBoardCopy = [...allBoards[source.droppableId]];
-        const DestBoardCopy = [...allBoards[destination?.droppableId]];
-        SourBoardCopy.splice(source.index, 1);
-        DestBoardCopy.splice(destination?.index, 0, draggableId);
+        const sourceBoard = [...allBoards[source.droppableId]];
+        const taskObj = sourceBoard[source.index];
+        const destinationBoard = [...allBoards[destination.droppableId]];
+        sourceBoard.splice(source.index, 1);
+        destinationBoard.splice(destination?.index, 0, taskObj);
         return {
           ...allBoards,
-          [source.droppableId]: SourBoardCopy,
-          [destination?.droppableId]: DestBoardCopy,
+          [source.droppableId]: sourceBoard,
+          [destination.droppableId]: destinationBoard,
         };
       });
     }
@@ -61,4 +64,5 @@ function DndComp() {
     </DragDropContext>
   );
 }
+
 export default DndComp;
