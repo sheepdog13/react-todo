@@ -1,9 +1,18 @@
 import { useForm } from "react-hook-form";
-import { Droppable } from "react-beautiful-dnd";
+import { Droppable, DragDropContext } from "react-beautiful-dnd";
 import styled from "styled-components";
 import DragabbleCard from "./DragabbleCard";
 import { useSetRecoilState } from "recoil";
 import { toDoState, ITodo } from "../dndatoms";
+
+interface IBoardProps {
+  toDos: ITodo[];
+  boardId: string;
+}
+
+interface IForm {
+  toDo: string;
+}
 
 const Wrapper = styled.div`
   width: 250px;
@@ -55,15 +64,6 @@ const Form = styled.form`
     margin: 0 auto;
   }
 `;
-
-interface IBoardProps {
-  toDos: ITodo[];
-  boardId: string;
-}
-
-interface IForm {
-  toDo: string;
-}
 
 function Board({ toDos, boardId }: IBoardProps) {
   const setToDos = useSetRecoilState(toDoState);
